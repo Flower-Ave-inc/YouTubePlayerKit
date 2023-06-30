@@ -43,12 +43,14 @@ public final class YouTubePlayerHostingView: YouTubePlayerHostingBaseView {
     ///   - configuration: The YouTubePlayer Configuration. Default value `.init()`
     public convenience init(
         source: YouTubePlayer.Source? = nil,
-        configuration: YouTubePlayer.Configuration = .init()
+        configuration: YouTubePlayer.Configuration = .init(),
+        originURL: URL? = nil
     ) {
         self.init(
             player: .init(
                 source: source,
-                configuration: configuration
+                configuration: configuration,
+                originURL: originURL
             )
         )
     }

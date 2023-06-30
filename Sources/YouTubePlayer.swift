@@ -40,6 +40,8 @@ public final class YouTubePlayer: ObservableObject {
         }
     }
     
+    public let originURL: URL?
+    
     /// The YouTubePlayer State CurrentValueSubject
     private(set) lazy var playerStateSubject = CurrentValueSubject<State?, Never>(nil)
     
@@ -79,10 +81,12 @@ public final class YouTubePlayer: ObservableObject {
     ///   - configuration: The YouTubePlayer Configuration. Default value `.init()`
     public init(
         source: Source? = nil,
-        configuration: Configuration = .init()
+        configuration: Configuration = .init(),
+        originURL: URL? = nil
     ) {
         self.source = source
         self.configuration = configuration
+        self.originURL = originURL
     }
     
 }

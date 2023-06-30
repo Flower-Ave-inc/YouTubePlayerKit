@@ -13,11 +13,13 @@ final class YouTubePlayerWebView: WKWebView {
     private(set) weak var player: YouTubePlayer?
     
     /// The origin URL
-    private(set) lazy var originURL: URL? = Bundle
-        .main
-        .bundleIdentifier
-        .flatMap { ["https://", $0.lowercased()].joined() }
-        .flatMap(URL.init)
+    var originURL: URL? {
+        player?.originURL ?? Bundle
+            .main
+            .bundleIdentifier
+            .flatMap { ["https://", $0.lowercased()].joined() }
+            .flatMap(URL.init)
+    }
     
     /// The YouTubePlayerWebView Event PassthroughSubject
     private(set) lazy var eventSubject = PassthroughSubject<Event, Never>()
